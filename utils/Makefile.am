@@ -47,3 +47,23 @@ hcitop_LDADD = \
 	@LIBBSD_LIBS@ \
 	@NCURSES_LIBS@
 endif
+
+if ENABLE_GSTHELPER
+bin_PROGRAMS += bluealsa-gst-helper
+bluealsa_gst_helper_SOURCES = \
+	../src/shared/dbus-client.c \
+	../src/shared/ffb.c \
+	../src/shared/log.c \
+	gst-helper.c
+bluealsa_gst_helper_CFLAGS = \
+	-I$(top_srcdir)/src \
+	@ALSA_CFLAGS@ \
+	@BLUEZ_CFLAGS@ \
+	@DBUS1_CFLAGS@ \
+	@GST_CFLAGS@
+bluealsa_gst_helper_LDADD = \
+	@ALSA_LIBS@ \
+	@BLUEZ_LIBS@ \
+	@DBUS1_LIBS@ \
+	@GST_LIBS@
+endif

@@ -156,6 +156,13 @@ AM_COND_IF([ENABLE_HCITOP], [
 	PKG_CHECK_MODULES([NCURSES], [ncurses])
 ])
 
+AC_ARG_ENABLE([gsthelper],
+	[AS_HELP_STRING([--enable-gsthelper], [enable building of gsthelper tool])])
+AM_CONDITIONAL([ENABLE_GSTHELPER], [test "x$enable_gsthelper" = "xyes"])
+AM_COND_IF([ENABLE_GSTHELPER], [
+	PKG_CHECK_MODULES([GST], [gstreamer-1.0 glib-2.0])
+])
+
 AC_ARG_ENABLE([test],
 	[AS_HELP_STRING([--enable-test], [enable unit test])])
 AM_CONDITIONAL([ENABLE_TEST], [test "x$enable_test" = "xyes"])
